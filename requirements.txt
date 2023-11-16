@@ -8,3 +8,4 @@ flask_jwt_extended
 passlib
 flask-migrate
 psycopg2
+requests
