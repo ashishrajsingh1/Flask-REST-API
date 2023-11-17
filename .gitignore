@@ -1,6 +1,5 @@
 # created by virtualenv automatically
 .venv
-instance/
 __pychache__/
 *.pyc
 .DS_Store
