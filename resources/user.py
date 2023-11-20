@@ -1,5 +1,3 @@
-import os
-import requests
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from flask_jwt_extended import (
@@ -13,7 +11,7 @@ from passlib.hash import pbkdf2_sha256
 from sqlalchemy import or_
 from db import db
 from models import UserModel
-from schemas import UserSchema, UserRegisterSchema
+from schemas import UserSchema
 from blocklist import BLOCKLIST
 
 blp = Blueprint("Users", "users", description="Operations on users")

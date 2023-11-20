@@ -51,6 +51,7 @@ class UserSchema(Schema):
     password = fields.Str(required=True, load_only=True)
 
 
-class UserRegisterSchema(UserSchema):
-    email = fields.Str(required=True)
-
+class DocumentSchema(Schema):
+    id = fields.Integer(dump_only=True)
+    name = fields.String(required=True)
+    content = fields.String(dump_only=True)
