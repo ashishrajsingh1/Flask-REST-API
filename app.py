@@ -7,11 +7,12 @@ from db import db
 from blocklist import BLOCKLIST
 from dotenv import load_dotenv
 
-from resources.user_input import blp as DocumentBlueprint
 from resources.user import blp as UserBlueprint
 from resources.item import blp as ItemBlueprint
 from resources.store import blp as StoreBlueprint
 from resources.tag import blp as TagBlueprint
+from resources.user_input import blp as DocumentBlueprint
+
 
 
 def create_app(db_url=None):
