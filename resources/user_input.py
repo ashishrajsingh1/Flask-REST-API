@@ -18,7 +18,6 @@ class DocumentCreate(MethodView):
 
         file = request.files['file']
 
-        # Check if the 'name' field is present in the JSON data
         if 'name' not in request.form:
             abort(422, message='Missing name field in the request.')
 
@@ -27,7 +26,7 @@ class DocumentCreate(MethodView):
         document = DocumentModel(name=name, content=file.read())
         db.session.add(document)
         db.session.commit()
-        return "File inserted successfully"
+        return {"message": "file created successfully."}, 201
 
 
 @blp.route('/document/<int:document_id>', methods=['GET'])
