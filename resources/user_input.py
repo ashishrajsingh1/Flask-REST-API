@@ -11,14 +11,23 @@ blp = Blueprint("Documents", "Documents", description="Operations on Documents")
 @blp.route('/document', methods=['POST'])
 class DocumentCreate(MethodView):
 
-    @blp.arguments(DocumentSchema)
     @blp.response(201, DocumentSchema)
-    def post(self, args):
+    def post(self):
+        if 'file' not in request.files:
+            abort(422, message='Missing file field in the request.')
+
         file = request.files['file']
-        document = DocumentModel(name=args['name'], content=file.read())
+
+        # Check if the 'name' field is present in the JSON data
+        if 'name' not in request.form:
+            abort(422, message='Missing name field in the request.')
+
+        name = request.form['name']
+
+        document = DocumentModel(name=name, content=file.read())
         db.session.add(document)
         db.session.commit()
-        return document, 201
+        return "File inserted successfully"
 
 
 @blp.route('/document/<int:document_id>', methods=['GET'])
