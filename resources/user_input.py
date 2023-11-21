@@ -11,7 +11,7 @@ blp = Blueprint("Documents", "Documents", description="Operations on Documents")
 @blp.route('/document', methods=['POST'])
 class DocumentCreate(MethodView):
 
-    @blp.arguments(DocumentSchema(only=('name',)), location='json')
+    @blp.arguments(DocumentSchema)
     @blp.response(201, DocumentSchema)
     def post(self, args):
         file = request.files['file']
