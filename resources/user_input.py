@@ -19,15 +19,10 @@ class DocumentCreate(MethodView):
 
         file = request.files['file']
 
-        if 'name' not in document_data:
-            abort(422, message='Missing name field in the request.')
-
-        name = document_data['name']
-
-        if DocumentModel.query.filter_by(name=name).first():
+        if DocumentModel.query.filter_by(name=document_data['name']).first():
             abort(409, message='A document with that name already exists.')
 
-        document = DocumentModel(name=name, content=file.read())
+        document = DocumentModel(name=document_data['name'], content=file.read())
         db.session.add(document)
         db.session.commit()
 
@@ -44,5 +39,4 @@ class DocumentRetrieve(MethodView):
         if not document:
             abort(404, message='Document not found')
 
-        return DocumentSchema.dump(document)
-
+        return DocumentSchema.dump(document), 200
