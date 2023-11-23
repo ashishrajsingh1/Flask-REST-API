@@ -14,7 +14,6 @@ from resources.tag import blp as TagBlueprint
 from resources.user_input import blp as DocumentBlueprint
 
 
-
 def create_app(db_url=None):
     app = Flask(__name__)
     load_dotenv()
