@@ -1,11 +1,11 @@
-flask~=2.3.3
+flask
 flask-smorest
-python-dotenv~=1.0.0
-marshmallow~=3.20.1
-sqlalchemy~=2.0.23
+python-dotenv
+marshmallow
+sqlalchemy
 flask-sqlalchemy
 flask_jwt_extended
-passlib~=1.7.4
+passlib
 flask-migrate
 psycopg2
 requests
