@@ -30,7 +30,7 @@ class DocumentCreate(MethodView):
         document = DocumentModel(name=name, content=file.read())
         db.session.add(document)
         db.session.commit()
-        return document_schema_instance.dump(document), 201
+        return {"message": "Document created successfully."}, 201
 
 
 @blp.route('/<int:document_id>', methods=['GET'])
@@ -43,4 +43,4 @@ class DocumentRetrieve(MethodView):
         if not document:
             abort(404, message='Document not found')
 
-        return document_schema_instance.dump(document), 200
+        return {"message": "User retrieved successfully."}, 201
