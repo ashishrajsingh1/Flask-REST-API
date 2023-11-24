@@ -10,19 +10,22 @@ blp = Blueprint('document', 'document', url_prefix='/documents', description='Do
 
 @blp.route('', methods=['POST'])
 class DocumentCreate(MethodView):
-
-    @blp.arguments(DocumentSchema, location='json')
     @blp.response(201, DocumentSchema)
-    def post(self, document_data):
+    def post(self):
         if 'file' not in request.files:
             abort(422, message='Missing file field in the request.')
 
         file = request.files['file']
 
-        if DocumentModel.query.filter_by(name=document_data['name']).first():
+        if 'name' not in request.form:
+            abort(422, message='Missing name field in the request.')
+
+        name = request.form['name']
+
+        if DocumentModel.query.filter_by(name=name).first():
             abort(409, message='A document with that name already exists.')
 
-        document = DocumentModel(name=document_data['name'], content=file.read())
+        document = DocumentModel(name=name, content=file.read())
         db.session.add(document)
         db.session.commit()
 
