@@ -1,5 +1,4 @@
 import io
-
 from flask import request, send_file
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
@@ -8,8 +7,6 @@ from models.user_input import DocumentModel
 from schemas import DocumentSchema
 
 blp = Blueprint('document', 'document', url_prefix='/documents', description='Document operations')
-
-document_schema = DocumentSchema()
 
 
 @blp.route('', methods=['POST'])
@@ -20,6 +17,9 @@ class DocumentCreate(MethodView):
     def post(self, document_data):
         name = document_data['name']
         file = request.files['file']
+
+        if not file:
+            abort(404, message='file not found.')
 
         if DocumentModel.query.filter_by(name=name).first():
             abort(409, message='A document with that name already exists.')
@@ -42,3 +42,10 @@ class DocumentRetrieve(MethodView):
             abort(404, message='Document not found')
 
         return send_file(io.BytesIO(document.content), as_attachment=True, download_name=document.name)
+
+    def delete(self, document_id):
+        document = DocumentModel.query.get_or_404(document_id)
+        db.session.delete(document)
+        db.session.commit()
+
+        return {"message : Document deleted successfully"}, 200
