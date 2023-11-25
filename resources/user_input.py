@@ -12,17 +12,12 @@ document_schema_instance = DocumentSchema()
 
 @blp.route('', methods=['POST'])
 class DocumentCreate(MethodView):
+
+    @blp.arguments(DocumentSchema, location='form')
     @blp.response(201, DocumentSchema)
-    def post(self):
-        if 'file' not in request.files:
-            abort(422, message='Missing file field in the request.')
-
+    def post(self, document_data):
+        name = document_data['name']
         file = request.files['file']
-
-        if 'name' not in request.form:
-            abort(422, message='Missing name field in the request.')
-
-        name = request.form['name']
 
         if DocumentModel.query.filter_by(name=name).first():
             abort(409, message='A document with that name already exists.')
@@ -30,6 +25,7 @@ class DocumentCreate(MethodView):
         document = DocumentModel(name=name, content=file.read())
         db.session.add(document)
         db.session.commit()
+
         return {"message": "Document created successfully."}, 201
 
 
@@ -43,4 +39,4 @@ class DocumentRetrieve(MethodView):
         if not document:
             abort(404, message='Document not found')
 
-        return {"message": "User retrieved successfully."}, 201
+        return {"message": "User retrieved successfully."}, 200
