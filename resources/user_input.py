@@ -7,7 +7,7 @@ from schemas import DocumentSchema
 
 blp = Blueprint('document', 'document', url_prefix='/documents', description='Document operations')
 
-document_schema_instance = DocumentSchema()
+document_schema = DocumentSchema()
 
 
 @blp.route('', methods=['POST'])
@@ -39,4 +39,4 @@ class DocumentRetrieve(MethodView):
         if not document:
             abort(404, message='Document not found')
 
-        return {"message": "User retrieved successfully."}, 200
+        return document_schema.dump(document), 200
