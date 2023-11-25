@@ -1,4 +1,6 @@
-from flask import request
+import io
+
+from flask import request, send_file
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from db import db
@@ -39,4 +41,4 @@ class DocumentRetrieve(MethodView):
         if not document:
             abort(404, message='Document not found')
 
-        return document_schema.dump(document), 200
+        return send_file(io.BytesIO(document.content), as_attachment=True, download_name=document.name)
