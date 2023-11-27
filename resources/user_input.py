@@ -44,7 +44,7 @@ class DocumentRetrieve(MethodView):
         return send_file(io.BytesIO(document.content), as_attachment=True, download_name=document.name)
 
     def delete(self, document_id):
-        document = DocumentModel.query.get_or_404(document_id)
+        document = DocumentModel.query.get(document_id)
         db.session.delete(document)
         db.session.commit()
 
