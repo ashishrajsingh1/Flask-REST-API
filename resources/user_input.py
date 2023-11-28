@@ -5,6 +5,8 @@ from flask_smorest import Blueprint, abort
 from db import db
 from models.user_input import DocumentModel
 from schemas import DocumentSchema
+from werkzeug.utils import secure_filename
+
 
 blp = Blueprint('document', 'document', url_prefix='/documents', description='Document operations')
 
@@ -19,11 +21,16 @@ class DocumentCreate(MethodView):
         file = request.files['file']
 
         if not file:
-            abort(404, message='file not found.')
+            abort(400, message='No file provided')
+
+        allowed_extensions = {'pdf', 'doc', 'docx'}
+        if '.' in file.filename and file.filename.rsplit('.', 1)[1].lower() not in allowed_extensions:
+            abort(400, message='Invalid file type. Only PDF, DOC, and DOCX files are allowed.')
 
         if DocumentModel.query.filter_by(name=name).first():
             abort(409, message='A document with that name already exists.')
 
+        filename = secure_filename(file.filename)
         document = DocumentModel(name=name, content=file.read())
         db.session.add(document)
         db.session.commit()
