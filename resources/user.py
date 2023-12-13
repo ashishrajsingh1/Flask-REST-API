@@ -1,3 +1,4 @@
+from flask import jsonify
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from flask_jwt_extended import (
@@ -27,6 +28,9 @@ class UserRegister(MethodView):
                 )
         ).first():
             abort(409, message="A user with that username or email already exists.")
+
+        if len(user_data["password"]) < 8:
+            abort(400, message="Password must be at least 8 characters long.")
 
         user = UserModel(
             username=user_data["username"],
@@ -63,19 +67,21 @@ class UserLogout(MethodView):
         return {"message": "Successfully logged out"}, 200
 
 
-@blp.route("/user/<int:user_id>")
-class User(MethodView):
+def success_response(data, message="Operation successful"):
+    return jsonify({"status": "success", "data": {"message": message, "result": data}})
 
-    @blp.response(200, UserSchema)
+
+@blp.route("/user/<user_id>")
+class User(MethodView):
     def get(self, user_id):
         user = UserModel.query.get_or_404(user_id)
-        return user
+        data = {"id": user.id, "username": user.username}
+        return success_response(data, "Retrieved successfully")
 
     def delete(self, user_id):
         user = UserModel.query.get_or_404(user_id)
-        db.session.delete(user)
-        db.session.commit()
-        return {"message": "User deleted."}, 200
+        user.delete()
+        return success_response({}, "User deleted.")
 
 
 @blp.route("/refresh")

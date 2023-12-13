@@ -57,6 +57,9 @@ class ItemList(MethodView):
     @blp.arguments(ItemSchema)
     @blp.response(201, ItemSchema)
     def post(self, item_data):
+        if "price" not in item_data or "name" not in item_data:
+            abort(400, message="Price and name are required fields.")
+
         item = ItemModel(**item_data)
 
         try:

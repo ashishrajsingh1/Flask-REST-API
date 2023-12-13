@@ -20,12 +20,10 @@ def create_app(db_url=None):
     app = Flask(__name__)
     load_dotenv()
     app.config.from_object(Config)
-
     db.init_app(app)
     migrate = Migrate(app, db)
     api = Api(app)
 
-    app.config["JWT_SECRET_KEY"] = "jose"
     jwt = JWTManager(app)
 
     @jwt.token_in_blocklist_loader

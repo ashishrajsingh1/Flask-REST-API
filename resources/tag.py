@@ -19,10 +19,15 @@ class TagsInStore(MethodView):
     @blp.arguments(TagSchema)
     @blp.response(201, TagSchema)
     def post(self, tag_data, store_id):
+        if "name" not in tag_data:
+            abort(400, message="Name is a required field for a tag.")
+
         if TagModel.query.filter(TagModel.store_id == store_id, TagModel.name == tag_data["name"]).first():
             abort(400, message="A tag with that name already exists in that store.")
 
-        tag = TagModel(**tag_data, store_id=store_id)
+        tag_data['store_id'] = store_id
+
+        tag = TagModel(**tag_data)
 
         try:
             db.session.add(tag)

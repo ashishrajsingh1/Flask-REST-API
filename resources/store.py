@@ -32,15 +32,15 @@ class StoreList(MethodView):
     @blp.arguments(StoreSchema)
     @blp.response(201, StoreSchema)
     def post(self, store_data):
+        if "name" not in store_data:
+            abort(400, message="Name is a required field for a store.")
+
         store = StoreModel(**store_data)
         try:
             db.session.add(store)
             db.session.commit()
         except IntegrityError:
-            abort(
-                400,
-                message="A store with that name already exists.",
-            )
+            abort(400,message="A store with that name already exists.")
         except SQLAlchemyError:
             abort(500, message="An error occurred creating the store.")
 
