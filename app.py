@@ -3,7 +3,7 @@ from flask import Flask, jsonify
 from flask_smorest import Api
 from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate
-
+from flask_login import LoginManager
 from config.config import Config
 from db import db
 from blocklist import BLOCKLIST
@@ -14,16 +14,28 @@ from resources.item import blp as ItemBlueprint
 from resources.store import blp as StoreBlueprint
 from resources.tag import blp as TagBlueprint
 from resources.user_input import blp as DocumentBlueprint
+from resources.home import blp as HomeBlueprint
+from resources.graph import blp as GraphBlueprint
+
+login_manager = LoginManager()
+login_manager.login_view = 'Users.login'
+login_manager.login_message_category = 'info'
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    from models import UserModel
+    return UserModel.query.get(user_id)
 
 
 def create_app(db_url=None):
     app = Flask(__name__)
+    login_manager.init_app(app)
     load_dotenv()
     app.config.from_object(Config)
     db.init_app(app)
     migrate = Migrate(app, db)
     api = Api(app)
-
     jwt = JWTManager(app)
 
     @jwt.token_in_blocklist_loader
@@ -89,4 +101,7 @@ def create_app(db_url=None):
     api.register_blueprint(StoreBlueprint)
     api.register_blueprint(TagBlueprint)
     api.register_blueprint(DocumentBlueprint)
+    api.register_blueprint(HomeBlueprint)
+    api.register_blueprint(GraphBlueprint)
+
     return app

@@ -1,0 +1,35 @@
+{% extends "Home.html" %}
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<body>
+
+
+
+    <script>
+            const accessToken = localStorage.getItem('jwtToken');
+
+            fetch('/logout', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error logging out.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                localStorage.removeItem('access_token');
+                window.location.replace('/login');
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        });
+    </script>
+</body>
+{% endblock %}

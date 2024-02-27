@@ -1,9 +1,11 @@
 import logging
+from flask_login import login_required
+from flask import render_template
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from flask_jwt_extended import jwt_required, get_jwt
 from sqlalchemy.exc import SQLAlchemyError
-
+from flask_cors import CORS
 from db import db
 from models import ItemModel
 from schemas import ItemSchema, ItemUpdateSchema
@@ -21,8 +23,15 @@ items_logger.addHandler(handler)
 
 blp = Blueprint("Items", "items", description="Operations on items")
 
+CORS(blp)
 
-@blp.route("/item/<string:item_id>")
+
+@blp.route("/item")
+def Items_page():
+    return render_template("items.html")
+
+
+@blp.route("/items/<string:item_id>")
 class Item(MethodView):
     @jwt_required()
     @blp.response(200, ItemSchema)
@@ -38,10 +47,6 @@ class Item(MethodView):
     @jwt_required()
     def delete(self, item_id):
         try:
-            jwt = get_jwt()
-            if not jwt.get("is_admin"):
-                abort(401, message="Admin privilege required.")
-
             item = ItemModel.query.get_or_404(item_id)
             db.session.delete(item)
             db.session.commit()
@@ -78,7 +83,7 @@ class Item(MethodView):
             abort(500, message="Internal Server Error")
 
 
-@blp.route("/item")
+@blp.route("/items")
 class ItemList(MethodView):
     @jwt_required()
     @blp.response(200, ItemSchema(many=True))

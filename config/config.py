@@ -16,4 +16,5 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = config.getboolean('Flask', 'SQLALCHEMY_TRACK_MODIFICATIONS', fallback=False)
     PROPAGATE_EXCEPTIONS = config.getboolean('Flask', 'PROPAGATE_EXCEPTIONS', fallback=True)
     JWT_SECRET_KEY = config.get('Flask', 'JWT_SECRET_KEY', fallback="jose")
+    SECRET_KEY = config.get('Flask', 'SECRET_KEY', fallback="1234")
     SQLALCHEMY_DATABASE_URI = config.get('Flask', 'SQLALCHEMY_DATABASE_URI', fallback="sqlite:///data.db")

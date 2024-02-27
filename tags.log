@@ -1,0 +1,12 @@
+2023-12-28 11:09:43,556 - INFO - Tag created successfully: t
+2023-12-28 11:19:56,191 - INFO - Tag deleted successfully: Tag ID - 3
+2023-12-28 11:20:14,724 - INFO - Tag deleted successfully: Tag ID - 2
+2023-12-28 11:27:05,974 - INFO - Tag created successfully: Electronics
+2023-12-28 11:27:42,542 - INFO - Tag linked to item successfully: Item ID - b7ac7163325f4516b51d28e76d1f7bb5, Tag ID - 2
+2023-12-28 11:29:24,451 - INFO - Tag created successfully: string
+2024-02-04 08:30:59,938 - ERROR - Error during tags retrieval: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-02-04 08:31:18,617 - INFO - Tag created successfully: as
+2024-02-04 08:31:18,634 - ERROR - Error during tags retrieval: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-02-08 11:37:33,651 - ERROR - Error during tags retrieval: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-02-08 11:46:24,230 - ERROR - Error during tags retrieval: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-02-08 14:40:18,385 - ERROR - Error during tags retrieval: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.

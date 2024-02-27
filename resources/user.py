@@ -1,5 +1,5 @@
 import logging
-from flask import jsonify
+from flask import jsonify, render_template, redirect, url_for, flash
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from flask_jwt_extended import (
@@ -9,18 +9,23 @@ from flask_jwt_extended import (
     get_jwt,
     jwt_required,
 )
+from flask_login import login_user, logout_user
 from passlib.hash import pbkdf2_sha256
 from sqlalchemy import or_
+
 from db import db
 from models import UserModel
+from resources import store
 from schemas import UserSchema
 from blocklist import BLOCKLIST
+from flask_cors import CORS
 
 logger = logging.getLogger(__name__)
 
 blp = Blueprint("Users", "users", description="Operations on users")
 
-# Set the logging level to INFO or any other level you prefer
+CORS(blp)
+
 logger.setLevel(logging.INFO)
 
 handler = logging.FileHandler("User.log")
@@ -30,6 +35,16 @@ formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
 handler.setFormatter(formatter)
 
 logger.addHandler(handler)
+
+
+@blp.route("/register")
+def register():
+    return render_template("Users.html")
+
+
+@blp.route("/login")
+def login():
+    return render_template("Login.html")
 
 
 @blp.route("/register")
@@ -53,7 +68,8 @@ class UserRegister(MethodView):
             )
             db.session.add(user)
             db.session.commit()
-
+            login_user(user)
+            flash(f'Account created successfully! You are logged in as {user.username}')
             logger.info(f"User registered successfully: {user_data['username']}")
 
             return {"message": "User created successfully."}, 201
@@ -75,6 +91,8 @@ class UserLogin(MethodView):
             if user and pbkdf2_sha256.verify(user_data["password"], user.password):
                 access_token = create_access_token(identity=user.id, fresh=True)
                 refresh_token = create_refresh_token(user.id)
+                login_user(user)
+                flash(f'Success! You are logged in as: {user.username}', category='success')
                 logger.info(f"User logged in successfully: {user_data['username']}")
                 return {"access_token": access_token, "refresh_token": refresh_token}, 200
 
@@ -92,6 +110,8 @@ class UserLogout(MethodView):
         try:
             jti = get_jwt()["jti"]
             BLOCKLIST.add(jti)
+            logout_user()
+            flash('You have been successfully logout, Thank You', category='info')
             logger.info("User logged out successfully")
             return {"message": "Successfully logged out"}, 200
 

@@ -1,0 +1,37 @@
+2023-12-28 11:06:50,785 - ERROR - Error during store retrieval: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2023-12-28 11:08:13,210 - ERROR - Error during store retrieval: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2023-12-28 11:25:02,638 - INFO - Store created successfully: Store ID - df07c05e092649539abd17e25ad5b572, Name - Store 23
+2024-01-12 15:39:32,644 - ERROR - Error during store retrieval: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-02-04 08:20:25,814 - INFO - Store created successfully: Store ID - 7c430f0a9bce4256893df01585d26475, Name - My
+2024-02-07 10:28:37,693 - INFO - Store created successfully: Store ID - 6083c4cd32774b17ba02b418b1132625, Name - Store20
+2024-02-12 15:01:18,374 - ERROR - Error during store retrieval: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-02-13 12:39:41,753 - INFO - Store deleted successfully: Store ID - 7c430f0a9bce4256893df01585d26475
+2024-02-15 10:08:20,720 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:08:22,552 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:10:10,089 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:11:49,294 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:13:16,634 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:13:17,519 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:13:18,010 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:13:18,278 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:13:18,892 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:13:20,974 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:14:03,237 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:14:04,145 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:15:14,943 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:15:29,821 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:15:30,716 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:15:31,220 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:15:31,468 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:19:02,672 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:19:51,801 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:20:40,568 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:22:55,973 - ERROR - Error during store retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-15 10:22:56,022 - ERROR - Error during stores retrieval: Schema.dump() missing 1 required positional argument: 'obj'
+2024-02-19 10:17:13,375 - INFO - Store created successfully: Store ID - 626b4658fcc94559a5e7b5c84fbbef53, Name - My store5
+2024-02-19 10:54:24,798 - INFO - Store created successfully: Store ID - 55c2b4ee363b4d72aa0eca20e40758e1, Name - Store001
+2024-02-19 10:55:13,228 - INFO - Store deleted successfully: Store ID - 55c2b4ee363b4d72aa0eca20e40758e1
+2024-02-19 10:55:26,638 - INFO - Store deleted successfully: Store ID - 626b4658fcc94559a5e7b5c84fbbef53
+2024-02-19 10:55:53,279 - INFO - Store deleted successfully: Store ID - 6083c4cd32774b17ba02b418b1132625
+2024-02-21 17:29:04,813 - INFO - Store created successfully: Store ID - 910517ee1e4540279fa5f1b38b7b6f12, Name - My store5
+2024-02-22 09:46:38,002 - INFO - Store created successfully: Store ID - d1038030dff84721b6434fd35e6c5924, Name - My store6

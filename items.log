@@ -1,0 +1,47 @@
+2023-12-28 11:03:32,938 - INFO - Item created successfully: Item ID - 2ab5bf58980a4922a6879cd98bfd8708, Name - Laptop
+2023-12-28 11:18:57,459 - INFO - Item deleted successfully: Item ID - 2ab5bf58980a4922a6879cd98bfd8708
+2023-12-28 11:26:40,236 - INFO - Item created successfully: Item ID - b7ac7163325f4516b51d28e76d1f7bb5, Name - Mobile
+2024-02-02 10:51:47,196 - ERROR - Error during item retrieval: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-02-02 10:52:06,221 - ERROR - Error during item update: (sqlite3.IntegrityError) NOT NULL constraint failed: items.store_id
+[SQL: INSERT INTO items (id, name, price, store_id) VALUES (?, ?, ?, ?)]
+[parameters: ('ba163d2b31d54b099a4b5603da3ed999', 'Laptop', 20.99, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-02-02 10:53:05,486 - INFO - Item created successfully: Item ID - 61b9ab22f991425d9162b2e2a488aa48, Name - watch
+2024-02-04 07:58:33,220 - INFO - Item created successfully: Item ID - 0dcec77433dc43b3927d664c82bde7e8, Name - glass
+2024-02-08 10:26:10,854 - ERROR - Error during item retrieval: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-02-08 10:26:11,120 - ERROR - Error during item retrieval: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-02-13 12:21:02,665 - INFO - Item updated successfully: Item ID - 67727ab77a0f45569cc58fbd9bec7711
+2024-02-14 15:03:01,461 - INFO - Item updated successfully: Item ID - 67727ab77a0f45569cc58fbd9bec7711
+2024-02-14 15:17:49,729 - INFO - Item updated successfully: Item ID - 67727ab77a0f45569cc58fbd9bec7711
+2024-02-15 10:52:27,706 - INFO - Item updated successfully: Item ID - 67727ab77a0f45569cc58fbd9bec7711
+2024-02-15 10:52:27,747 - INFO - Item updated successfully: Item ID - 67727ab77a0f45569cc58fbd9bec7711
+2024-02-15 10:57:15,022 - INFO - Item created successfully: Item ID - 85c430b90e6747f7aa70189cf4861302, Name - charger
+2024-02-15 10:59:28,653 - ERROR - Error during item update: (sqlite3.IntegrityError) NOT NULL constraint failed: items.store_id
+[SQL: INSERT INTO items (id, name, price, store_id) VALUES (?, ?, ?, ?)]
+[parameters: ('31e73dfe685b4d029c7e2f991de27b7b', 'charger', 9.0, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-02-15 11:00:36,702 - ERROR - Error during item update: (sqlite3.IntegrityError) NOT NULL constraint failed: items.store_id
+[SQL: INSERT INTO items (id, name, price, store_id) VALUES (?, ?, ?, ?)]
+[parameters: ('31e73dfe685c430b90e6747f7aa70189cf486130285b4d029c7e2f991de27b7b', 'charger', 9.0, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-02-15 11:00:54,898 - INFO - Item updated successfully: Item ID - 85c430b90e6747f7aa70189cf4861302
+2024-02-19 10:21:58,579 - ERROR - Error during item update: (sqlite3.IntegrityError) NOT NULL constraint failed: items.store_id
+[SQL: INSERT INTO items (id, name, price, store_id) VALUES (?, ?, ?, ?)]
+[parameters: ('31e73dfe685b4d029c7e2f991de27b7b', 'charger', 6.0, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-02-19 10:22:10,918 - INFO - Item updated successfully: Item ID - 67727ab77a0f45569cc58fbd9bec7711
+2024-02-20 10:08:20,843 - INFO - Item updated successfully: Item ID - 67727ab77a0f45569cc58fbd9bec7711
+2024-02-20 11:51:17,953 - INFO - Item updated successfully: Item ID - 67727ab77a0f45569cc58fbd9bec7711
+2024-02-22 09:47:55,153 - INFO - Item created successfully: Item ID - ed617d54b15e481baca93b57b4cb4087, Name - Bottle
+2024-02-22 09:49:42,204 - ERROR - Error during item update: (sqlite3.IntegrityError) NOT NULL constraint failed: items.store_id
+[SQL: INSERT INTO items (id, name, price, store_id) VALUES (?, ?, ?, ?)]
+[parameters: (' ed617d54b15e481baca93b57b4cb4087', 'Bottle', 12.0, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-02-22 09:53:58,179 - INFO - Item updated successfully: Item ID - ed617d54b15e481baca93b57b4cb4087
+2024-02-26 12:28:16,427 - INFO - Item created successfully: Item ID - 35e946c72e8d4bb9a0181c538a410b7f, Name - Earphone
+2024-02-26 14:17:35,344 - INFO - Item created successfully: Item ID - b2c5f58f6d2240ef8d14f9153ab43804, Name - Pen
+2024-02-27 10:27:52,635 - INFO - Item created successfully: Item ID - 0e919a00f4004eefa049c9a56c0ca106, Name - Basket
+2024-02-27 11:00:28,393 - INFO - Item created successfully: Item ID - 6e8ffc1616b24c359a0965dc867bf0ed, Name - Paper
+2024-02-27 11:05:33,138 - INFO - Item deleted successfully: Item ID - 6e8ffc1616b24c359a0965dc867bf0ed
+2024-02-27 11:58:53,695 - INFO - Item created successfully: Item ID - 698158b316ca496cba1c242b85dfbb90, Name - Paper
+2024-02-27 12:29:09,725 - INFO - Item deleted successfully: Item ID - 698158b316ca496cba1c242b85dfbb90

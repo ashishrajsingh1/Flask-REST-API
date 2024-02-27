@@ -1,0 +1,72 @@
+{% extends 'Home.html' %}
+{% block title %}
+Register Page
+{% endblock %}
+
+{% block content %}
+<body>
+
+<div class="container mt-5">
+    <h1>User Management</h1>
+        <div id="registerForm" style="display: block;">
+        <h2>Register</h2>
+        <form id="registerUserForm">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+        </div>
+
+    <div id="responseMessage"></div>
+</div>
+
+  <br>
+        <center>
+              <div class="checkbox mb-3">
+               <h6>Already have an account?</h6>
+               <a class="btn btn-sm btn-secondary" href="/login">Login</a>
+            </div>
+        </center>
+
+<script>
+     document.getElementById('registerUserForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        fetch('http://127.0.0.1:5000/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: username,
+                password: password
+            })
+        })
+        .then(function (response) {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(function (data) {
+            document.getElementById('responseMessage').innerHTML = '<div class="alert alert-success" role="alert">' + data.message + '</div>';
+        })
+        .catch(function (error) {
+            document.getElementById('responseMessage').innerHTML = '<div class="alert alert-danger" role="alert">' + error.message + '</div>';
+        });
+    });
+
+</script>
+
+</body>
+
+{%endblock%}

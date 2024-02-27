@@ -1,0 +1,16 @@
+2023-12-28 11:10:21,789 - INFO - Document retrieved successfully: ars3
+2023-12-28 11:15:44,510 - INFO - Document retrieved successfully: ars3
+2023-12-28 11:21:46,388 - ERROR - Error during document creation: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+2023-12-28 11:21:59,967 - INFO - Document created successfully: ars4
+2024-01-12 15:38:32,316 - INFO - Document retrieved successfully: ars3
+2024-02-01 14:33:41,814 - INFO - Document retrieved successfully: ars3
+2024-02-01 14:39:47,454 - INFO - Document retrieved successfully: ars4
+2024-02-01 14:45:21,488 - INFO - Document created successfully: ars1
+2024-02-01 14:45:26,484 - ERROR - Error during document creation: 409 Conflict: A conflict happened while processing the request. The resource might have been modified while the request was being processed.
+2024-02-01 14:45:28,139 - ERROR - Error during document creation: 409 Conflict: A conflict happened while processing the request. The resource might have been modified while the request was being processed.
+2024-02-01 14:45:34,265 - ERROR - Error during document creation: 409 Conflict: A conflict happened while processing the request. The resource might have been modified while the request was being processed.
+2024-02-01 14:45:40,228 - ERROR - Error during document creation: 409 Conflict: A conflict happened while processing the request. The resource might have been modified while the request was being processed.
+2024-02-01 14:45:41,116 - ERROR - Error during document creation: 409 Conflict: A conflict happened while processing the request. The resource might have been modified while the request was being processed.
+2024-02-01 14:45:53,345 - ERROR - Error during document creation: 409 Conflict: A conflict happened while processing the request. The resource might have been modified while the request was being processed.
+2024-02-01 15:21:01,704 - INFO - Document created successfully: ars2
+2024-02-02 10:14:35,238 - INFO - Document created successfully: ashish2

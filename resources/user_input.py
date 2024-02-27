@@ -1,6 +1,6 @@
 import io
 import logging
-from flask import request, send_file
+from flask import request, send_file, render_template
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from db import db
@@ -19,10 +19,15 @@ handler.setFormatter(formatter)
 
 document_logger.addHandler(handler)
 
-blp = Blueprint('document', 'document', url_prefix='/documents', description='Document operations')
+blp = Blueprint('document', 'document', description='Document operations')
 
 
-@blp.route('', methods=['POST'])
+@blp.route("/document")
+def Document():
+    return render_template("Document.html")
+
+
+@blp.route('/documents', methods=['POST'])
 class DocumentCreate(MethodView):
 
     @blp.arguments(DocumentSchema, location='form')
@@ -56,7 +61,7 @@ class DocumentCreate(MethodView):
             return {"message": "Internal Server Error"}, 500
 
 
-@blp.route('/<int:document_id>', methods=['GET'])
+@blp.route('/documents/<int:document_id>', methods=['GET'])
 class DocumentRetrieve(MethodView):
 
     @blp.response(200, DocumentSchema)

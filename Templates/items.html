@@ -1,0 +1,196 @@
+{% extends 'Home.html' %}
+{% block title %}
+Items page
+{% endblock %}
+
+{% block content %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: White;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        button[type="submit"] {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+<body class="text-center">
+<div class="container">
+   <h1>Item Management</h1>
+
+    <h2>Add Item</h2>
+    <form id="addItemForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="price">Price:</label><br>
+        <input type="number" id="price" name="price"><br>
+        <label for="store">Store:</label><br>
+        <select id="store" name="store">
+            <!-- Options will be dynamically added here via JavaScript -->
+        </select><br>
+        <button type="submit">Add Item</button>
+    </form>
+
+    <h2>Update Item</h2>
+    <form id="updateItemForm">
+        <label for="itemId">Item ID:</label><br>
+        <input type="text" id="itemId" name="itemId"><br>
+        <label for="updatedName">Updated Name:</label><br>
+        <input type="text" id="updatedName" name="updatedName"><br>
+        <label for="updatedPrice">Updated Price:</label><br>
+        <input type="number" id="updatedPrice" name="updatedPrice"><br><br>
+        <button type="submit">Update Item</button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+function addTokenToHeaders() {
+    const token = localStorage.getItem('jwtToken');
+    return {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+    };
+}
+
+async function fetchStores() {
+    try {
+        const response = await fetch('http://localhost:5000/store', {
+            headers: addTokenToHeaders()
+        });
+        if (!response.ok) {
+            throw new Error('Failed to fetch stores');
+        }
+        const stores = await response.json();
+        return stores;
+    } catch (error) {
+        console.error(error);
+        alert(error.message);
+        return [];
+    }
+}
+
+async function populateStoreDropdown() {
+    const storeDropdown = document.getElementById('store');
+    storeDropdown.innerHTML = '';
+    const stores = await fetchStores();
+    stores.forEach(store => {
+        const option = document.createElement('option');
+        option.value = store.id;
+        option.textContent = store.name;
+        storeDropdown.appendChild(option);
+    });
+}
+
+populateStoreDropdown();
+
+document.getElementById('addItemForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const token = localStorage.getItem('jwtToken');
+    if (!token) {
+        alert('Please login to add an item');
+        return;
+    }
+
+    const name = document.getElementById('name').value;
+    const price = document.getElementById('price').value;
+    const storeId = document.getElementById('store').value;
+
+    try {
+        const response = await fetch('http://localhost:5000/items', {
+            method: 'POST',
+            headers: addTokenToHeaders(),
+            body: JSON.stringify({
+                name: name,
+                price: price,
+                store_id: storeId
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to add item');
+        }
+
+        const data = await response.json();
+        console.log(data);
+        alert('Item added successfully');
+    } catch (error) {
+        console.error(error);
+        alert(error.message);
+    }
+});
+
+document.getElementById('updateItemForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const token = localStorage.getItem('jwtToken');
+    if (!token) {
+        alert('Please login to update an item');
+        return;
+    }
+
+    const itemId = document.getElementById('itemId').value;
+    const updatedName = document.getElementById('updatedName').value;
+    const updatedPrice = document.getElementById('updatedPrice').value;
+
+    try {
+        const response = await fetch(`http://localhost:5000/items/${itemId}`, {
+            method: 'PUT',
+            headers: addTokenToHeaders(),
+            body: JSON.stringify({
+                name: updatedName,
+                price: updatedPrice
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to update item');
+        }
+
+        const data = await response.json();
+        console.log(data);
+        alert('Item updated successfully');
+    } catch (error) {
+        console.error(error);
+        alert(error.message);
+    }
+});
+
+    </script>
+</div>
+</body>
+{% endblock %}

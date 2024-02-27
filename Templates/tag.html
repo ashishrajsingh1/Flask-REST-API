@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tags and Items Management</title>
+</head>
+<body>
+    <h1>Tags and Items Management</h1>
+
+    <div id="tagsList">
+    </div>
+
+    <h2>Add New Tag</h2>
+    <form id="addTagForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="store_id">Store ID:</label>
+        <input type="text" id="store_id" name="store_id" required>
+        <button type="submit">Add Tag</button>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          fetchTags();
+
+    const addTagForm = document.getElementById('addTagForm');
+    addTagForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(addTagForm);
+        const tagData = {
+            name: formData.get('name'),
+            store_id: formData.get('store_id')
+        };
+        addTag(tagData);
+    });
+});
+
+function fetchTags() {
+    fetch('/store/<store_id>/tag', {
+        method: 'GET'
+    })
+    .then(response => response.json())
+    .then(data => {
+        displayTags(data);
+    })
+    .catch(error => {
+        console.error('Error fetching tags:', error);
+    });
+}
+
+function displayTags(tags) {
+    const tagsList = document.getElementById('tagsList');
+    tagsList.innerHTML = '';
+
+    tags.forEach(tag => {
+        const tagElement = document.createElement('div');
+        tagElement.innerHTML = `
+            <p><strong>ID:</strong> ${tag.id}</p>
+            <p><strong>Name:</strong> ${tag.name}</p>
+            <hr>
+        `;
+        tagsList.appendChild(tagElement);
+    });
+}
+
+function addTag(tagData) {
+    fetch('/store/<store_id>/tag', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(tagData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Tag added successfully:', data);
+        fetchTags();
+    })
+    .catch(error => {
+        console.error('Error adding tag:', error);
+    });
+}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends "home.html" %}
+{% block title %}
+Graph Page
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Graph</div>
+
+                <div class="card-body">
+                    <div id="graph-container">
+                        {% if graph_html %}
+                            {{ graph_html|safe }}
+                        {% else %}
+                            <p>No data available for graph.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

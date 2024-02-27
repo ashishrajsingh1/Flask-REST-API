@@ -1,10 +1,13 @@
 import logging
+from flask_login import login_required
+from flask import render_template
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError
 from db import db
-from models import StoreModel
-from schemas import StoreSchema
+from models import StoreModel, ItemModel  # Import ItemModel
+from schemas import StoreSchema, ItemSchema  # Import ItemSchema
+from flask_cors import CORS
 
 stores_logger = logging.getLogger(__name__ + '.stores')
 stores_logger.setLevel(logging.INFO)
@@ -19,6 +22,14 @@ stores_logger.addHandler(handler)
 
 blp = Blueprint("Stores", __name__, description="Operations on stores")
 
+CORS(blp)
+
+
+@blp.route("/stores")
+def Store_page():
+    stores = StoreModel.query.all()
+    return render_template("store.html", stores=stores)
+
 
 @blp.route("/store/<string:store_id>")
 class Store(MethodView):
@@ -26,6 +37,8 @@ class Store(MethodView):
     def get(self, store_id):
         try:
             store = StoreModel.query.get_or_404(store_id)
+            items = ItemModel.query.filter_by(store_id=store_id).all()  # Fetch associated items
+            store.items = items  # Assign items to the store object
             return store
 
         except Exception as e:
@@ -78,4 +91,17 @@ class StoreList(MethodView):
             abort(400, message="A store with that name already exists.")
         except SQLAlchemyError as e:
             stores_logger.error(f"Error during store creation: {str(e)}")
+            abort(500, message="Internal Server Error")
+
+
+@blp.route("/store/<string:store_id>/items")
+class StoreItems(MethodView):
+    @blp.response(200, ItemSchema(many=True))
+    def get(self, store_id):
+        try:
+            items = ItemModel.query.filter_by(store_id=store_id).all()
+            return items
+
+        except Exception as e:
+            stores_logger.error(f"Error during items retrieval: {str(e)}")
             abort(500, message="Internal Server Error")

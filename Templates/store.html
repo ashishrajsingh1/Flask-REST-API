@@ -1,0 +1,78 @@
+{% extends 'Home.html' %}
+
+{% block title %}
+Stores page
+{% endblock %}
+
+{% block content %}
+<h1>Store Management System</h1>
+
+<form id="addStoreForm">
+    <input type="text" id="storeName" placeholder="Enter store name" required>
+    <button type="submit">Add Store</button>
+</form><br><br>
+
+<ul id="storeList">
+</ul>
+
+<ul id="itemList">
+</ul>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('addStoreForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var storeName = document.getElementById('storeName').value;
+
+            fetch('/store', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name: storeName })
+            })
+            .then(response => response.json())
+            .then(data => {
+                var storeList = document.getElementById('storeList');
+                var listItem = document.createElement('li');
+                listItem.innerHTML = `<a href="/store/${data.id}">${data.name}</a>`;
+                storeList.appendChild(listItem);
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        fetch('/store')
+        .then(response => response.json())
+        .then(data => {
+            var storeList = document.getElementById('storeList');
+            data.forEach(store => {
+                var listItem = document.createElement('li');
+                listItem.innerHTML = `<a href="/store/${store.id}">${store.name}</a>`;
+                storeList.appendChild(listItem);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+
+        document.addEventListener('click', function(event) {
+            if (event.target.matches('#storeList a')) {
+                event.preventDefault();
+                var storeId = event.target.getAttribute('href').split('/').pop();
+                fetch(`/store/${storeId}/items`)
+                .then(response => response.json())
+                .then(data => {
+                    var itemList = document.getElementById('itemList');
+                    itemList.innerHTML = '';
+                    data.forEach(item => {
+                        var listItem = document.createElement('li');
+                        listItem.textContent = `Name: ${item.name} , Price: $${item.price} , ItemId: ${item.id}`;
+                        itemList.appendChild(listItem);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        });
+    });
+</script>
+
+
+{% endblock %}

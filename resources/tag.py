@@ -1,4 +1,6 @@
 import logging
+
+from flask import render_template
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from sqlalchemy.exc import SQLAlchemyError
@@ -18,6 +20,11 @@ handler.setFormatter(formatter)
 tags_logger.addHandler(handler)
 
 blp = Blueprint("Tags", "tags", description="Operations on tags")
+
+
+@blp.route("/tag")
+def tag_page():
+    return render_template("tag.html")
 
 
 @blp.route("/store/<string:store_id>/tag")
