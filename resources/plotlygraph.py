@@ -1,5 +1,4 @@
 import plotly.express as px
-import pandas as pd
 from flask import render_template
 from flask_smorest import Blueprint
 from models import StoreModel
@@ -22,7 +21,7 @@ def generate_graph():
 
         graph_html = fig.to_html(full_html=False)
 
-        return render_template("graph.html", graph_html=graph_html)
+        return render_template("plotlygraph.html", graph_html=graph_html)
 
     except Exception as e:
         return str(e), 500

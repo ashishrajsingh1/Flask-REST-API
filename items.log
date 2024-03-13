@@ -45,3 +45,9 @@
 2024-02-27 11:05:33,138 - INFO - Item deleted successfully: Item ID - 6e8ffc1616b24c359a0965dc867bf0ed
 2024-02-27 11:58:53,695 - INFO - Item created successfully: Item ID - 698158b316ca496cba1c242b85dfbb90, Name - Paper
 2024-02-27 12:29:09,725 - INFO - Item deleted successfully: Item ID - 698158b316ca496cba1c242b85dfbb90
+2024-02-27 14:03:07,530 - INFO - Item created successfully: Item ID - fa87533b55e8468e9900a42529948267, Name - Paper
+2024-02-27 15:22:05,668 - INFO - Item created successfully: Item ID - 22167cabc35d407b86de898f1269e620, Name - table
+2024-02-27 15:32:38,538 - INFO - Item deleted successfully: Item ID - 22167cabc35d407b86de898f1269e620
+2024-02-29 15:00:34,247 - INFO - Item created successfully: Item ID - 4dc5932fb2fd47f28ba7d2dc3e9ae401, Name - table
+2024-02-29 15:04:49,014 - INFO - Item created successfully: Item ID - 025ca86ca4684168ac8eeb909335c191, Name - phone
+2024-02-29 15:06:49,672 - INFO - Item deleted successfully: Item ID - 4dc5932fb2fd47f28ba7d2dc3e9ae401

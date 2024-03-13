@@ -299,3 +299,88 @@
 2024-02-27 12:07:31,618 - INFO - User logged in successfully: ars
 2024-02-27 12:28:39,710 - INFO - User logged in successfully: ars
 2024-02-27 12:29:15,359 - INFO - User logged out successfully
+2024-02-27 14:02:17,057 - INFO - User logged in successfully: ars
+2024-02-27 14:13:55,619 - INFO - User logged out successfully
+2024-02-27 15:21:19,143 - ERROR - Error during user login: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
+2024-02-27 15:21:27,098 - INFO - User logged in successfully: ars
+2024-02-27 15:22:21,936 - INFO - User logged out successfully
+2024-02-27 15:23:02,718 - INFO - User logged in successfully: Ashish23
+2024-02-27 15:25:53,981 - INFO - User logged in successfully: ars
+2024-02-27 15:29:21,474 - INFO - User logged out successfully
+2024-02-27 15:31:39,483 - INFO - User logged in successfully: ars
+2024-02-27 15:32:55,159 - INFO - User logged out successfully
+2024-02-29 10:33:28,329 - INFO - User logged in successfully: Ashish23
+2024-02-29 10:33:44,156 - INFO - User logged out successfully
+2024-02-29 10:48:13,455 - INFO - User logged in successfully: Ashish23
+2024-02-29 10:48:52,014 - INFO - User logged out successfully
+2024-02-29 11:03:48,464 - INFO - User logged in successfully: Ashish23
+2024-02-29 11:10:29,244 - INFO - User logged out successfully
+2024-02-29 11:10:40,472 - INFO - User logged in successfully: Ashish23
+2024-02-29 11:18:17,387 - INFO - User logged out successfully
+2024-02-29 11:23:21,922 - INFO - User logged in successfully: Ashish23
+2024-02-29 11:24:52,585 - INFO - User logged out successfully
+2024-02-29 11:48:04,347 - INFO - User logged in successfully: Ashish23
+2024-02-29 11:48:10,657 - INFO - User logged out successfully
+2024-02-29 11:50:09,224 - INFO - User logged in successfully: ars
+2024-02-29 11:50:15,428 - INFO - User logged out successfully
+2024-02-29 11:53:14,018 - INFO - User logged in successfully: Ashish23
+2024-02-29 11:53:33,448 - INFO - User logged out successfully
+2024-02-29 12:00:42,693 - INFO - User logged in successfully: Ashish23
+2024-02-29 12:02:09,705 - INFO - User logged out successfully
+2024-02-29 12:04:41,206 - INFO - User logged in successfully: ars
+2024-02-29 14:51:30,840 - INFO - User logged in successfully: Ashish23
+2024-02-29 14:51:33,565 - INFO - User logged out successfully
+2024-02-29 14:53:15,345 - INFO - User logged in successfully: Ashish23
+2024-02-29 14:56:34,066 - INFO - User logged out successfully
+2024-02-29 14:57:15,799 - INFO - User logged in successfully: Ashish23
+2024-02-29 15:00:48,821 - INFO - User logged out successfully
+2024-02-29 15:03:53,931 - INFO - User logged in successfully: Ashish23
+2024-02-29 15:05:27,875 - INFO - User logged out successfully
+2024-02-29 15:05:40,309 - INFO - User logged in successfully: ars
+2024-02-29 15:06:55,587 - INFO - User logged out successfully
+2024-03-01 10:17:16,290 - INFO - User logged in successfully: Ashish23
+2024-03-01 10:19:44,916 - INFO - User logged out successfully
+2024-03-01 10:22:18,830 - ERROR - Error during user login: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
+2024-03-01 10:22:21,364 - ERROR - Error during user login: 401 Unauthorized: The server could not verify that you are authorized to access the URL requested. You either supplied the wrong credentials (e.g. a bad password), or your browser doesn't understand how to supply the credentials required.
+2024-03-01 10:22:29,350 - INFO - User logged in successfully: ars
+2024-03-01 10:27:58,698 - INFO - User logged out successfully
+2024-03-01 10:28:16,202 - INFO - User logged in successfully: Ashish23
+2024-03-01 10:28:35,607 - INFO - User logged out successfully
+2024-03-01 10:41:58,767 - INFO - User logged in successfully: Ashish23
+2024-03-01 10:44:13,994 - INFO - User logged out successfully
+2024-03-01 10:44:24,825 - INFO - User logged in successfully: Ashish23
+2024-03-01 10:45:30,563 - INFO - User logged out successfully
+2024-03-01 15:15:21,828 - INFO - User logged in successfully: Ashish23
+2024-03-02 09:56:06,524 - INFO - User logged in successfully: Ashish23
+2024-03-02 09:56:54,682 - INFO - User logged out successfully
+2024-03-04 10:37:24,611 - INFO - User logged in successfully: Ashish23
+2024-03-04 10:39:13,359 - INFO - User logged out successfully
+2024-03-04 11:28:26,429 - INFO - User logged in successfully: ars
+2024-03-04 16:47:05,356 - INFO - User logged in successfully: ars
+2024-03-04 16:50:07,469 - INFO - User logged out successfully
+2024-03-05 10:10:13,812 - INFO - User logged in successfully: ars
+2024-03-05 10:11:38,674 - INFO - User logged out successfully
+2024-03-05 12:30:26,248 - INFO - User logged in successfully: Ashish23
+2024-03-05 12:30:34,331 - INFO - User logged out successfully
+2024-03-06 10:24:28,050 - INFO - User logged in successfully: Ashish23
+2024-03-06 10:29:59,162 - INFO - User logged out successfully
+2024-03-06 10:30:08,613 - INFO - User logged in successfully: Ashish23
+2024-03-06 10:35:21,175 - INFO - User logged out successfully
+2024-03-06 10:38:46,465 - INFO - User logged in successfully: ars
+2024-03-06 10:52:40,432 - INFO - User logged out successfully
+2024-03-06 11:31:40,389 - INFO - User logged in successfully: Ashish23
+2024-03-06 11:34:01,582 - INFO - User logged out successfully
+2024-03-06 14:25:40,458 - INFO - User logged in successfully: Ashish23
+2024-03-07 10:16:42,413 - INFO - User logged in successfully: ars
+2024-03-07 15:52:03,658 - INFO - User logged in successfully: ars
+2024-03-07 15:53:03,083 - INFO - User logged out successfully
+2024-03-12 10:10:17,206 - INFO - User logged in successfully: ars
+2024-03-12 10:11:37,200 - INFO - User logged out successfully
+2024-03-12 14:45:04,103 - INFO - User logged in successfully: Ashish23
+2024-03-12 14:46:19,793 - INFO - User logged out successfully
+2024-03-12 14:53:04,039 - INFO - User logged in successfully: Ashish23
+2024-03-12 14:53:05,700 - ERROR - Error during user logout: name 'user_data' is not defined
+2024-03-12 15:09:25,685 - INFO - User logged in successfully: Ashish23
+2024-03-12 15:13:45,749 - INFO - User logged out successfully
+2024-03-13 15:00:54,742 - INFO - User logged in successfully: ars
+2024-03-13 15:01:24,365 - INFO - User logged out successfully

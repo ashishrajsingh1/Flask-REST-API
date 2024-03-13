@@ -35,3 +35,4 @@
 2024-02-19 10:55:53,279 - INFO - Store deleted successfully: Store ID - 6083c4cd32774b17ba02b418b1132625
 2024-02-21 17:29:04,813 - INFO - Store created successfully: Store ID - 910517ee1e4540279fa5f1b38b7b6f12, Name - My store5
 2024-02-22 09:46:38,002 - INFO - Store created successfully: Store ID - d1038030dff84721b6434fd35e6c5924, Name - My store6
+2024-02-29 10:48:42,545 - ERROR - Error during stores items count retrieval: object of type 'AppenderQuery' has no len()

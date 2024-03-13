@@ -1,12 +1,11 @@
 import logging
-from flask_login import login_required
 from flask import render_template
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError
 from db import db
-from models import StoreModel, ItemModel  # Import ItemModel
-from schemas import StoreSchema, ItemSchema  # Import ItemSchema
+from models import StoreModel, ItemModel
+from schemas import StoreSchema, ItemSchema
 from flask_cors import CORS
 
 stores_logger = logging.getLogger(__name__ + '.stores')
@@ -37,8 +36,8 @@ class Store(MethodView):
     def get(self, store_id):
         try:
             store = StoreModel.query.get_or_404(store_id)
-            items = ItemModel.query.filter_by(store_id=store_id).all()  # Fetch associated items
-            store.items = items  # Assign items to the store object
+            items = ItemModel.query.filter_by(store_id=store_id).all()
+            store.items = items
             return store
 
         except Exception as e:

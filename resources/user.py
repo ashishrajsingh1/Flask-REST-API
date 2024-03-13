@@ -1,5 +1,5 @@
 import logging
-from flask import jsonify, render_template, redirect, url_for, flash
+from flask import jsonify, render_template, flash
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from flask_jwt_extended import (
@@ -15,7 +15,6 @@ from sqlalchemy import or_
 
 from db import db
 from models import UserModel
-from resources import store
 from schemas import UserSchema
 from blocklist import BLOCKLIST
 from flask_cors import CORS
@@ -112,7 +111,7 @@ class UserLogout(MethodView):
             BLOCKLIST.add(jti)
             logout_user()
             flash('You have been successfully logout, Thank You', category='info')
-            logger.info("User logged out successfully")
+            logger.info(f"User logged out successfully")
             return {"message": "Successfully logged out"}, 200
 
         except Exception as e:

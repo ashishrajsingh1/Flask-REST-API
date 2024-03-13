@@ -1,0 +1,23 @@
+{% extends 'Home.html' %}
+{% block title %}
+Graph Page
+{% endblock %}
+
+{% block content %}
+<h1>Graphs</h1>
+<body>
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="chartTypeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Chart.js
+    </button>
+    <div class="dropdown-menu" aria-labelledby="chartTypeDropdown">
+        <a class="dropdown-item" href="/pie">Pie</a>
+        <a class="dropdown-item" href="/line">Line</a>
+        <a class="dropdown-item" href="/doughnut">Doughnut</a>
+        <a class="dropdown-item" href="/bar">Bar</a>
+    </div>
+</div><br>
+
+<a href="/generate_graph" style="font-size: 20px; margin-left: 20px;">Plotly</a>
+</body>
+{% endblock %}

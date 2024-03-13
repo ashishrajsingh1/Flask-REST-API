@@ -1,6 +1,5 @@
 from flask import render_template
 from flask_smorest import Blueprint
-from flask_login import current_user
 
 blp = Blueprint("Home", __name__)
 

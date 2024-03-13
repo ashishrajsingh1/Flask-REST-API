@@ -1,4 +1,3 @@
-import os
 from flask import Flask, jsonify
 from flask_smorest import Api
 from flask_jwt_extended import JWTManager
@@ -15,7 +14,9 @@ from resources.store import blp as StoreBlueprint
 from resources.tag import blp as TagBlueprint
 from resources.user_input import blp as DocumentBlueprint
 from resources.home import blp as HomeBlueprint
-from resources.graph import blp as GraphBlueprint
+from resources.plotlygraph import blp as GraphBlueprint
+from resources.chatjsgraph import blp as ChartjsBlueprint
+from resources.Graph import blp as MaingraphBlueprint
 
 login_manager = LoginManager()
 login_manager.login_view = 'Users.login'
@@ -28,7 +29,7 @@ def load_user(user_id):
     return UserModel.query.get(user_id)
 
 
-def create_app(db_url=None):
+def create_app():
     app = Flask(__name__)
     login_manager.init_app(app)
     load_dotenv()
@@ -103,5 +104,7 @@ def create_app(db_url=None):
     api.register_blueprint(DocumentBlueprint)
     api.register_blueprint(HomeBlueprint)
     api.register_blueprint(GraphBlueprint)
+    api.register_blueprint(ChartjsBlueprint)
+    api.register_blueprint(MaingraphBlueprint)
 
     return app

@@ -1,0 +1,84 @@
+{% extends 'Home.html' %}
+{% block title %}
+Line Graph
+{% endblock %}
+
+{% block content %}
+<h1>Line Graph</h1>
+<body class="text-center">
+
+    <div style="width: 800px; height: 600px;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        function fetchData() {
+            return fetch('http://127.0.0.1:5000/store')
+                .then(response => response.json())
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                    return Promise.reject(error);
+                });
+        }
+
+        function prepareChartData() {
+            return fetchData()
+                .then(storesData => {
+                    const storeNames = storesData.map(store => store.name);
+                    const itemCounts = storesData.map(store => store.items.length);
+                    return { storeNames: storeNames, itemCounts: itemCounts };
+                });
+        }
+
+        function createChart() {
+            prepareChartData()
+                .then(chartData => {
+                    const ctx = document.getElementById('myChart').getContext('2d');
+                    const storeItemsChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: chartData.storeNames,
+                            datasets: [{
+                                label: 'Items',
+                                data: chartData.itemCounts,
+                                borderWidth: 1,
+                            }]
+                        },
+                        options: {
+                            maintainAspectRatio: false,
+                            responsive: true,
+                            scales: {
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: 'Stores',
+                                        color: 'white'
+                                    },
+                                    ticks: {
+                                        color: 'white'
+                                    }
+                                },
+                                y: {
+                                    title: {
+                                        display: true,
+                                        text: 'Items',
+                                        color: 'white',
+                                        beginAtZero: true
+                                    },
+                                    ticks: {
+                                        color: 'white'
+                                    }
+                                }
+                            }
+                        }
+                    });
+                })
+                .catch(error => console.error('Error creating chart:', error));
+        }
+
+        createChart();
+    </script>
+</body>
+{% endblock %}

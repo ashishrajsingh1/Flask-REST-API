@@ -1,9 +1,8 @@
 import logging
-from flask_login import login_required
 from flask import render_template
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
-from flask_jwt_extended import jwt_required, get_jwt
+from flask_jwt_extended import jwt_required
 from sqlalchemy.exc import SQLAlchemyError
 from flask_cors import CORS
 from db import db
